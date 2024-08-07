@@ -6,23 +6,26 @@ import {
   FormLabel,
   Input,
   Stack,
-  Alert,
-  AlertIcon,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import useShowToast from "../hooks/useShowToast";
 
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const navigate = useNavigate();
+  const showToast = useShowToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
 
     if (!username || !password) {
-      setError("Username and password cannot be empty.");
+      showToast(
+        "Attention",
+        "Username or Password cannot be empty.",
+        "warning"
+      );
+
       return;
     }
 
@@ -41,12 +44,13 @@ export const LoginForm = () => {
       // Check the structure of the response
       if (response.ok) {
         navigate("/welcome");
+        showToast("Success", "Login Successfull", "success");
       } else {
-        setError("Invalid username or password");
+        showToast("Error", "Invalid username or password", "error");
       }
     } catch (error) {
       console.error("Error during login:", error);
-      setError("Login failed. Please try again later.");
+      showToast("Error", "Login failed. Please try again later.", "error");
     }
   };
   return (
@@ -55,30 +59,27 @@ export const LoginForm = () => {
         <FormControl>
           <FormLabel>Username</FormLabel>
           <Input
+            size="lg"
             name="username"
             type="text"
             autoComplete="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            required
+            placeholder="Username"
+            fontSize="md"
           />
           <FormLabel>Password</FormLabel>
           <Input
+            size="lg"
             name="password"
             type="password"
             autoComplete="current-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
+            placeholder="Password"
+            fontSize="md"
           />
         </FormControl>
-
-        {error && (
-          <Alert status="error">
-            <AlertIcon />
-            {error}
-          </Alert>
-        )}
 
         <Button type="submit" colorScheme="blue" size="lg" fontSize="md">
           Sign in

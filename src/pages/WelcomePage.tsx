@@ -1,92 +1,70 @@
-import { Box, chakra } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  Heading,
+  LightMode,
+  Text,
+} from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const WelcomePage = () => {
   return (
-    <Box pos="relative" overflow="hidden">
-      <Box maxW="7xl" mx="auto">
-        <Box
-          pos="relative"
-          pb={{
-            base: 8,
-            sm: 16,
-            md: 20,
-            lg: 28,
-            xl: 32,
-          }}
-          w="full"
-          border="solid 1px transparent"
+    <Box
+      as="section"
+      bg="gray.800"
+      py="12"
+      position="relative"
+      h="100vh"
+      bgImage="/public/images/background.jpg"
+      bgSize="cover"
+      bgPosition="center"
+      _after={{
+        content: `""`,
+        display: "block",
+        w: "full",
+        h: "full",
+        bg: "blackAlpha.700",
+        position: "absolute",
+        inset: 0,
+        zIndex: 0,
+      }}
+    >
+      <Box
+        maxW={{ base: "xl", md: "7xl" }}
+        mx="auto"
+        px={{ base: "6", md: "8" }}
+        h="full"
+        zIndex={1}
+        position="relative"
+      >
+        <Center
+          flexDirection="column"
+          textAlign="center"
+          color="white"
+          h="full"
         >
-          <Box
-            maxW={{
-              base: "7xl",
-            }}
-            px={{
-              base: 4,
-              sm: 6,
-              lg: 8,
-            }}
-            mt={{
-              base: 12,
-              md: 16,
-              lg: 20,
-              xl: 28,
-            }}
-          >
-            <Box
-              textAlign="center"
-              w={{
-                base: "full",
-                md: 11 / 12,
-                xl: 8 / 12,
-              }}
-              mx="auto"
-            >
-              <chakra.h1
-                fontSize={{
-                  base: "4xl",
-                  sm: "5xl",
-                  md: "6xl",
-                }}
-                letterSpacing="tight"
-                lineHeight="short"
-                fontWeight="extrabold"
-                color="gray.900"
-                _dark={{
-                  color: "white",
-                }}
+          <Heading size="3xl" fontWeight="extrabold">
+            Welcome Page
+          </Heading>
+          <Text fontSize="lg" fontWeight="medium" mt="3">
+            The emptiness here, serves as the completion of the given
+            assignment.
+          </Text>
+          <LightMode>
+            <Link to="/">
+              <Button
+                colorScheme="blue"
+                size="lg"
+                mt="6"
+                fontWeight="bold"
+                fontSize="md"
               >
-                <chakra.span
-                  display={{
-                    base: "block",
-                    xl: "inline",
-                  }}
-                >
-                  WELCOME
-                </chakra.span>
-              </chakra.h1>
-              <chakra.p
-                mt={{
-                  base: 3,
-                  sm: 5,
-                  md: 5,
-                }}
-                mx={{
-                  sm: "auto",
-                  lg: 0,
-                }}
-                mb={6}
-                fontSize={{
-                  base: "lg",
-                  md: "xl",
-                }}
-                color="gray.500"
-                lineHeight="base"
-              >
-                This is the completed assessment
-              </chakra.p>
-            </Box>
-          </Box>
-        </Box>
+                Log Out
+              </Button>
+            </Link>
+          </LightMode>
+        </Center>
       </Box>
     </Box>
   );

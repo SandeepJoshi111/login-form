@@ -10,6 +10,7 @@ const LoginPage = () => {
       height="100%"
       bg={"gray.50"}
     >
+      {/* Display the left content of the Login Page */}
       <Box
         maxH="100vh"
         overflow="hidden"
@@ -31,6 +32,7 @@ const LoginPage = () => {
           Welcome Back!
         </Text>
       </Box>
+      {/* Display the right content of the Login Page */}
       <Box
         flex="1"
         display="flex"

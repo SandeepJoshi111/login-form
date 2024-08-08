@@ -34,3 +34,7 @@ $ npm install
 $ npm run dev
 ```
 
+### Credential
+
+Username : `username`
+Password : `password`

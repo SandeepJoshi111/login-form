@@ -16,7 +16,7 @@ const WelcomePage = () => {
       py="12"
       position="relative"
       h="100vh"
-      bgImage="/public/images/background.jpg"
+      bgImage="/images/background.jpg"
       bgSize="cover"
       bgPosition="center"
       _after={{

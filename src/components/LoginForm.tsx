@@ -11,8 +11,8 @@ import { useNavigate } from "react-router-dom";
 import useShowToast from "../hooks/useShowToast";
 
 export const LoginForm = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
   const showToast = useShowToast();
 
@@ -49,6 +49,7 @@ export const LoginForm = () => {
         showToast("Error", "Invalid username or password", "error");
       }
     } catch (error) {
+      // Any error
       console.error("Error during login:", error);
       showToast("Error", "Login failed. Please try again later.", "error");
     }
@@ -65,7 +66,7 @@ export const LoginForm = () => {
             autoComplete="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Username"
+            placeholder="Enter username"
             fontSize="md"
           />
           <FormLabel>Password</FormLabel>
@@ -76,13 +77,13 @@ export const LoginForm = () => {
             autoComplete="current-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
+            placeholder="Enter password"
             fontSize="md"
           />
         </FormControl>
 
         <Button type="submit" colorScheme="blue" size="lg" fontSize="md">
-          Sign in
+          Log In
         </Button>
       </Stack>
     </chakra.form>

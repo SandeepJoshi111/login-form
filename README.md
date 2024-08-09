@@ -25,13 +25,13 @@ git clone https://github.com/SandeepJoshi111/login-form
 2. Install the project dependencies
 
 ```js
-$ npm install
+npm install
 ```
 
 3. Run the following commands to start the development server
 
 ```js
-$ npm run dev
+npm run dev
 ```
 
 ### Credential
